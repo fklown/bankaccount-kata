@@ -9,11 +9,11 @@ public class Account {
     this.currentBalance = builder.balance;
   }
 
-  public BigDecimal getCurrentBalance() {
+  public synchronized BigDecimal getCurrentBalance() {
     return this.currentBalance;
   }
 
-  private void setCurrentBalance(BigDecimal amountToAdd) {
+  private synchronized void setCurrentBalance(BigDecimal amountToAdd) {
     this.currentBalance = amountToAdd;
   }
 

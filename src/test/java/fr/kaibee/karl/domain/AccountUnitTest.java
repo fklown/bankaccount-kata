@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AccountUnitTest {
   @Test
-  void shouldIncreaseBalanceOnDeposit() {
+  void shouldIncreaseBalanceByAmountDeposited() {
     BigDecimal deposit = new BigDecimal(120);
     BigDecimal initialBalance = new BigDecimal(590);
     Account account = new Account.AccountBuilder().withBalance(initialBalance).build();
@@ -20,7 +20,7 @@ class AccountUnitTest {
   }
 
   @Test
-  void shouldDecreaseBalanceOnWithdrawal() {
+  void shouldDecreaseBalanceByAmountWithdrawn() {
     BigDecimal withdrawal = new BigDecimal(120);
     BigDecimal initialBalance = new BigDecimal(590);
     Account account = new Account.AccountBuilder().withBalance(initialBalance).build();
