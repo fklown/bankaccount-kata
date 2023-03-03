@@ -1,6 +1,7 @@
 package fr.kaibee.karl.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,12 +11,18 @@ class OperationUnitTest {
   void shouldHoldStatementAttributes() {
     BigDecimal balance = new BigDecimal("3489.15");
     BigDecimal amount = new BigDecimal("1541.15");
-    Operation operation = new Operation(OperationType.DEPOSIT, "2020-09-12", EntryType.CREDIT, amount, balance);
+    LocalDate date = LocalDate.of(2020,9,12);
+    Operation operation = new Operation(
+      OperationType.DEPOSIT,
+      date,
+      EntryType.CREDIT,
+      amount,
+      balance);
 
-    assertThat(operation.date()).isNotNull();
-    assertThat(operation.amount()).isNotNull().isGreaterThan(new BigDecimal(0));
+    assertThat(operation.amount()).isNotNull().isEqualTo(amount);
+    assertThat(operation.balance()).isNotNull().isEqualTo(balance);
+    assertThat(operation.date()).isNotNull().isEqualTo(date);
     assertThat(operation.sign()).isNotNull().isEqualTo(EntryType.CREDIT);
-    assertThat(operation.balance()).isNotNull();
-    assertThat(operation.type()).isNotNull();
+    assertThat(operation.type()).isNotNull().isEqualTo(OperationType.DEPOSIT);
   }
 }
