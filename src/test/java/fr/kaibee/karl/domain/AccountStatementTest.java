@@ -19,11 +19,12 @@ class AccountStatementTest {
     accountStatement.generate(account);
     String date = LocalDate.now().format(DateTimeFormatter.ofPattern(DATE_FORMAT_PATTERN));
 
-    Formatter formatter = new Formatter();
     StringBuilder expected = new StringBuilder();
-    expected.append(formatter.format("%-10s %10s %14s\n", "Date", "Amount", "Balance"))
-      .append(formatter.format("%-10s %10s %14s\n", date, "+500", "500"));
+    Formatter formatter = new Formatter();
+    formatter.format("%-10s %10s %14s\n", "Date", "Amount", "Balance");
+    formatter.format("%-10s %10s %14s\n", date, "+500", "500");
+    expected.append(formatter);
 
-    assertThat(accountStatement.print()).startsWith(expected).endsWith(expected);
+    assertThat(accountStatement.print()).isEqualTo(expected.toString());
   }
 }

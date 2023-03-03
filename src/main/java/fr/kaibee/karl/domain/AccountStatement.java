@@ -22,24 +22,22 @@ public class AccountStatement implements Report {
     writeHeader();
 
     account.getOperations().forEach(this::writeOperationRow);
+    statement.append(formatter);
   }
 
   private void writeHeader() {
-    Formatter header = formatter.format(ROW_FORMAT, DATE, AMOUNT, BALANCE);
-
-    statement.append(header);
+    formatter.format(ROW_FORMAT, DATE, AMOUNT, BALANCE);
   }
 
   private void writeOperationRow(Operation operation) {
     String amountWithSign = operation.sign().getSign() + operation.amount();
 
-    Formatter operationRow = formatter.format(
+    formatter.format(
       ROW_FORMAT,
       operation.date().format(DateTimeFormatter.ofPattern(DATE_FORMAT)),
       amountWithSign,
       operation.balance());
 
-    statement.append(operationRow);
   }
 
   @Override
