@@ -9,35 +9,51 @@ public class AccountStatement implements Report {
   public static final String DATE = "Date";
   private static final String DATE_FORMAT = "dd.MM.yyyy";
   private static final String ROW_FORMAT = "%-10s %10s %14s\n";
-  private final StringBuilder statement;
-  private final Formatter formatter;
+  private StringBuilder statement;
+  private Formatter formatter;
 
   public AccountStatement() {
+    newStatement();
+  }
+
+  private void newStatement() {
     this.formatter = new Formatter();
     this.statement = new StringBuilder();
   }
 
   @Override
   public void generate(Account account) {
-    writeHeader();
+    newStatement();
 
-    account.getOperations().forEach(this::writeOperationRow);
-    statement.append(formatter);
+    addHeaderToStatement();
+    addOperationRowsToStatement(account);
+
+    buildStatement();
   }
 
-  private void writeHeader() {
-    formatter.format(ROW_FORMAT, DATE, AMOUNT, BALANCE);
+  private void addHeaderToStatement() {
+    addRowToStatement(DATE, AMOUNT, BALANCE);
+  }
+
+  private void addRowToStatement(String startColumn, String middleColumn, String lastColumn) {
+    formatter.format(ROW_FORMAT, startColumn, middleColumn, lastColumn);
+  }
+
+  private void addOperationRowsToStatement(Account account) {
+    account.getOperations().forEach(this::writeOperationRow);
   }
 
   private void writeOperationRow(Operation operation) {
+    String accountBalance = operation.balance().toString();
     String amountWithSign = operation.sign().getSign() + operation.amount();
+    String formattedDate = operation.date().format(DateTimeFormatter.ofPattern(DATE_FORMAT));
 
-    formatter.format(
-      ROW_FORMAT,
-      operation.date().format(DateTimeFormatter.ofPattern(DATE_FORMAT)),
-      amountWithSign,
-      operation.balance());
+    addRowToStatement(formattedDate, amountWithSign, accountBalance);
 
+  }
+
+  private void buildStatement() {
+    statement.append(formatter);
   }
 
   @Override
