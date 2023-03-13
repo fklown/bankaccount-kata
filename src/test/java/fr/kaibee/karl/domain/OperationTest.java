@@ -1,12 +1,15 @@
 package fr.kaibee.karl.domain;
 
+import fr.kaibee.karl.bankaccount.domain.EntryType;
+import fr.kaibee.karl.bankaccount.domain.Operation;
+import fr.kaibee.karl.bankaccount.domain.OperationType;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class OperationUnitTest {
+class OperationTest {
   @Test
   void shouldHoldStatementAttributes() {
     BigDecimal balance = new BigDecimal("3489.15");

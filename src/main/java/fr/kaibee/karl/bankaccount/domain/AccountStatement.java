@@ -1,4 +1,4 @@
-package fr.kaibee.karl.domain;
+package fr.kaibee.karl.bankaccount.domain;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Formatter;
@@ -49,7 +49,6 @@ public class AccountStatement implements Report {
     String formattedDate = operation.date().format(DateTimeFormatter.ofPattern(DATE_FORMAT));
 
     addRowToStatement(formattedDate, amountWithSign, accountBalance);
-
   }
 
   private void buildStatement() {

@@ -1,4 +1,4 @@
-package fr.kaibee.karl.domain;
+package fr.kaibee.karl.bankaccount.domain;
 
 public interface Report {
   void generate(Account account);

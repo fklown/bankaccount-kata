@@ -1,4 +1,4 @@
-package fr.kaibee.karl.domain;
+package fr.kaibee.karl.bankaccount.domain;
 
 public enum OperationType {
   DEPOSIT,

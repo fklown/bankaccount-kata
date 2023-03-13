@@ -1,5 +1,7 @@
 package fr.kaibee.karl.domain;
 
+import fr.kaibee.karl.bankaccount.domain.Account;
+import fr.kaibee.karl.bankaccount.domain.AccountStatement;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,11 +1,12 @@
 package fr.kaibee.karl.domain;
 
+import fr.kaibee.karl.bankaccount.domain.Account;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class AccountUnitTest {
+class AccountTest {
   @Test
   void shouldIncreaseBalanceByAmountDeposited() {
     BigDecimal deposit = new BigDecimal(120);

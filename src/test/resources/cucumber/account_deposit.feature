@@ -1,5 +1,5 @@
 Feature: Is deposited amount correctly added to an account balance?
-  Every bank user should be able to deposit any amount into her or his bank account.
+  For saving purposes, every bank user should be able to deposit any amount into her or his bank account.
 
   Scenario Outline: Initial account, amount to add, the final balance should represents the sum of them both.
     Given an account with an initial balance of <initial_balance>
