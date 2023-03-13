@@ -35,20 +35,20 @@ public class AccountStatement implements Report {
     addRowToStatement(DATE, AMOUNT, BALANCE);
   }
 
-  private void addRowToStatement(String startColumn, String middleColumn, String lastColumn) {
-    formatter.format(ROW_FORMAT, startColumn, middleColumn, lastColumn);
-  }
-
   private void addOperationRowsToStatement(Account account) {
     account.getOperations().forEach(this::writeOperationRow);
   }
 
   private void writeOperationRow(Operation operation) {
     String accountBalance = operation.balance().toString();
-    String amountWithSign = operation.sign().getSign() + operation.amount();
+    String amountWithSign = operation.sign().getSymbol() + operation.amount();
     String formattedDate = operation.date().format(DateTimeFormatter.ofPattern(DATE_FORMAT));
 
     addRowToStatement(formattedDate, amountWithSign, accountBalance);
+  }
+
+  private void addRowToStatement(String firstCell, String middleCell, String lastCell) {
+    formatter.format(ROW_FORMAT, firstCell, middleCell, lastCell);
   }
 
   private void buildStatement() {

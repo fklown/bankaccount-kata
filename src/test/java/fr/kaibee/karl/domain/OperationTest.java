@@ -1,6 +1,6 @@
 package fr.kaibee.karl.domain;
 
-import fr.kaibee.karl.bankaccount.domain.EntryType;
+import fr.kaibee.karl.bankaccount.domain.OperationSign;
 import fr.kaibee.karl.bankaccount.domain.Operation;
 import fr.kaibee.karl.bankaccount.domain.OperationType;
 import java.math.BigDecimal;
@@ -18,14 +18,14 @@ class OperationTest {
     Operation operation = new Operation(
       OperationType.DEPOSIT,
       date,
-      EntryType.CREDIT,
+      OperationSign.CREDIT,
       amount,
       balance);
 
     assertThat(operation.amount()).isNotNull().isEqualTo(amount);
     assertThat(operation.balance()).isNotNull().isEqualTo(balance);
     assertThat(operation.date()).isNotNull().isEqualTo(date);
-    assertThat(operation.sign()).isNotNull().isEqualTo(EntryType.CREDIT);
+    assertThat(operation.sign()).isNotNull().isEqualTo(OperationSign.CREDIT);
     assertThat(operation.type()).isNotNull().isEqualTo(OperationType.DEPOSIT);
   }
 }

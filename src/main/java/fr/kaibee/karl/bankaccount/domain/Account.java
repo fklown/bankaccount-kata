@@ -31,7 +31,7 @@ public class Account {
     addOperation(new Operation(
       OperationType.DEPOSIT,
       LocalDate.now(),
-      EntryType.CREDIT,
+      OperationSign.CREDIT,
       depositAmount,
       this.getCurrentBalance()));
   }
@@ -43,7 +43,7 @@ public class Account {
     addOperation(new Operation(
       OperationType.WITHDRAWAL,
       LocalDate.now(),
-      EntryType.DEBIT,
+      OperationSign.DEBIT,
       withdrawalAmount,
       this.getCurrentBalance()));
   }
@@ -65,11 +65,15 @@ public class Account {
     }
 
     public Account build() {
+      setBalanceToZeroWhenMissing();
+
+      return new Account(this);
+    }
+
+    private void setBalanceToZeroWhenMissing() {
       if (Objects.isNull(this.balance)) {
         this.balance = new BigDecimal(0);
       }
-
-      return new Account(this);
     }
   }
 }
