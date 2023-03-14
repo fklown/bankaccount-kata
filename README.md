@@ -24,6 +24,8 @@ I thought they would fit perfectly to try and use **Cucumber** on this project.
 
 You can find every cucumber test feature under `bankaccount-kata/src/test/resources/cucumber/`
 
+They will be run with unit tests during Maven test goal.
+
 
 ### Design choices
 
