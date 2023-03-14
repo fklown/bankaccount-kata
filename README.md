@@ -31,7 +31,7 @@ They will be run with unit tests during Maven test goal.
 
 Went full TDD on it, so it's far from perfect as I'm still learning.
 
-Went for Java's BigDecimal instead of primitive int for the reason I listed above (a bit more real).
+Went for Java's BigDecimal instead of primitive int for the reason I listed above (a bit more real, but it's a no-brainer considering primitive obsession).
 
 For now neither Layered or Ports and Adapter architectures are respected. I'll fix it asap.
 
